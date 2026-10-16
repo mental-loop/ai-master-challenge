@@ -122,6 +122,18 @@ Audit competitivo; métrica **revolving** + MRR; fila com **motivo_risco**; regi
 
 ---
 
+## Validar números
+
+1. `cd submissions/felipe` → **`start.bat --full`** (recomputa tudo + pytest).
+2. Conferir `solution/outputs/summary_stats.json` vs KPIs do dashboard (mesmo recorte global).
+3. Reconciliação: `outputs/data_quality_summary.csv` ↔ card **Integridade dos dados**.
+4. Fila CS: `outputs/fila_cs_top50.csv` ↔ tabela do Command Center (ordenada por `prioridade_mrr`).
+5. Modelo: AUC em `summary_stats.json` = tooltip KPI; detalhe em `reports/model_and_limits.md`.
+
+API local opcional: `cd solution && python api_server.py` → http://127.0.0.1:8766/health
+
+---
+
 ## Evidências
 
 - [x] Narrativa escrita — `process-log/PROCESS-LOG.md`

@@ -5,8 +5,12 @@ set "ROOT=%~dp0"
 if "%ROOT:~-1%"=="\" set "ROOT=%ROOT:~0,-1%"
 cd /d "%ROOT%"
 
+set "FULL=0"
+if /I "%~1"=="--full" set "FULL=1"
+
 echo.
 echo  RavenStack Intelligence - setup e dashboard Challenge 001
+if "%FULL%"=="1" echo  Modo --full: pipeline, build, verify e pytest.
 echo  Pasta: %ROOT%
 echo.
 
@@ -28,8 +32,9 @@ if errorlevel 1 goto :fail
 
 set "DIST=%ROOT%\solution\command-center\dist\index.html"
 set "BUNDLE=%ROOT%\solution\command-center\public\data\bundle.json"
-if exist "%DIST%" if exist "%BUNDLE%" (
+if "%FULL%"=="0" if exist "%DIST%" if exist "%BUNDLE%" (
   echo [2/7] Build e bundle ja presentes - pulando pipeline e npm.
+  echo        Rode start.bat --full para refazer analise, build, verify e pytest.
   goto :serve_only
 )
 

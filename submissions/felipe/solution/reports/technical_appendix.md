@@ -23,4 +23,4 @@ Coeficientes: `outputs/model_top_coefficients.csv`.
 
 ## Linhagem (5 tabelas)
 
-Ver `../../docs/METODOLOGIA.md` §4.
+Ver `../../docs/METODOLOGIA.md` (linhagem de dados).

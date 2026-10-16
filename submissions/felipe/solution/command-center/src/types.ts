@@ -20,6 +20,34 @@ export type Conta = {
   taxa_escalacao_pct?: number;
 };
 
+export type InvestigacaoConta = {
+  eventos_churn: { data: string; motivo: string; reativacao: boolean }[];
+  uso_mensal: { mes: string; total: number }[];
+  suporte: {
+    tickets: number;
+    csat_medio: number | null;
+    taxa_escalacao_pct: number;
+  };
+  alertas: string[];
+};
+
+export type QualidadeDados = {
+  contas_total: number;
+  churn_liquido_flag: number;
+  contas_flag_sem_evento_churn: number;
+  mrr_contratual_flag_sem_evento_usd: number;
+  pct_uso_antes_assinatura: number;
+  eventos_churn_total: number;
+  contas_com_evento: number;
+};
+
+export type RecomendacaoDestaque = {
+  acao: string;
+  impacto_mrr_usd: number;
+  impacto_anual_arr_usd: number;
+  confianca: string;
+};
+
 export type Bundle = {
   meta: { produto: string; versao: string; autor: string; design_ref: string };
   narrativa_executiva: { headline: string; bullets: string[] };
@@ -31,6 +59,9 @@ export type Bundle = {
     periodo_min?: string;
     periodo_max?: string;
   };
+  qualidade_dados?: QualidadeDados;
+  recomendacao_destaque?: RecomendacaoDestaque;
+  investigacoes?: Record<string, InvestigacaoConta>;
 };
 
 export type FilterState = {

@@ -7,6 +7,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from analytics.account_investigation import build_investigation_index
 from analytics.columns import EXPORT_RENAME, to_export_frame
 from analytics.paths import DASH_PUBLIC, OUT
 
@@ -18,7 +19,12 @@ def _records(df: pd.DataFrame) -> list[dict]:
     return json.loads(out.to_json(orient="records", date_format="iso"))
 
 
-def export_dashboard_bundle(acc: pd.DataFrame, summary: dict) -> Path:
+def export_dashboard_bundle(
+    acc: pd.DataFrame,
+    summary: dict,
+    tables: dict | None = None,
+    qualidade_dados: dict | None = None,
+) -> Path:
     DASH_PUBLIC.mkdir(parents=True, exist_ok=True)
     export = to_export_frame(acc)
     usage = pd.read_csv(OUT / "usage_by_industry_month.csv")
@@ -75,6 +81,22 @@ def export_dashboard_bundle(acc: pd.DataFrame, summary: dict) -> Path:
         },
         "colunas_glossario": {v: k for k, v in EXPORT_RENAME.items()},
     }
+
+    rec_path = OUT / "recommendations_impact.csv"
+    if rec_path.exists():
+        top = pd.read_csv(rec_path).iloc[0]
+        bundle["recomendacao_destaque"] = {
+            "acao": str(top["acao"]),
+            "impacto_mrr_usd": float(top["impacto_mrr_usd"]),
+            "impacto_anual_arr_usd": float(top["impacto_anual_arr_usd"]),
+            "confianca": str(top["confianca"]),
+        }
+
+    if qualidade_dados:
+        bundle["qualidade_dados"] = qualidade_dados
+
+    if tables is not None:
+        bundle["investigacoes"] = build_investigation_index(tables, acc)
 
     path = DASH_PUBLIC / "bundle.json"
     path.write_text(json.dumps(bundle, ensure_ascii=False, indent=2), encoding="utf-8")

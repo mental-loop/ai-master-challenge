@@ -441,6 +441,122 @@ td {
   font-size: 0.75rem;
 }
 
+.reco-strip {
+  margin: 0 0 1.25rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(184, 142, 94, 0.35);
+  border-radius: 8px;
+  background: rgba(184, 142, 94, 0.08);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.data-quality .dq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem 1rem;
+  margin-top: 0.75rem;
+}
+
+.dq-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.dq-item .label {
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.dq-item .value {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.row-click {
+  cursor: pointer;
+}
+
+.row-click:hover td {
+  background: rgba(184, 142, 94, 0.08);
+}
+
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.drawer-panel {
+  width: min(420px, 100%);
+  height: 100%;
+  background: var(--bg-card);
+  border-left: 1px solid var(--border);
+  padding: 1.25rem 1rem 2rem;
+  overflow-y: auto;
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.35);
+}
+
+.drawer-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.drawer-head h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+}
+
+.drawer-close {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.link-btn {
+  border: none;
+  background: none;
+  color: var(--accent);
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+
+.drawer-muted {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.drawer-alerts {
+  margin: 0.75rem 0;
+  padding-left: 1.1rem;
+  color: #f0b4b4;
+  font-size: 0.82rem;
+}
+
+.drawer-list {
+  margin: 0.35rem 0 1rem;
+  padding-left: 1.1rem;
+  font-size: 0.85rem;
+}
+
+.drawer-list.compact li {
+  margin-bottom: 0.15rem;
+}
+
 @media (max-width: 900px) {
   .charts {
     grid-template-columns: 1fr;

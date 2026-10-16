@@ -19,8 +19,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 from analytics.columns import coalesce_plan_seats, attach_status, plan_column, to_export_frame
+from analytics.data_quality import export_data_quality
 from analytics.export_dashboard import export_dashboard_bundle
 from analytics.paths import DATA, OUT, REPORTS, FIG, SOLUTION
+from analytics.write_model_limits import write_model_and_limits
 
 ROOT = SOLUTION
 
@@ -735,9 +737,11 @@ def main() -> None:
         json.dumps(summary_stats, indent=2), encoding="utf-8"
     )
 
+    dq = export_data_quality(tables, acc)
     write_executive_summary(acc, paradox, model, qa)
     write_technical_appendix(acc, model)
-    export_dashboard_bundle(acc, summary_stats)
+    write_model_and_limits(model["test_auc"])
+    export_dashboard_bundle(acc, summary_stats, tables=tables, qualidade_dados=dq)
     print("OK — outputs em", OUT)
     print("Command Center:", SOLUTION / "command-center" / "dist" / "index.html")
     print(json.dumps(summary_stats, indent=2))

@@ -7,3 +7,5 @@ pyarrow>=14.0
 # UI: React em command-center/ (npm run build)
 openpyxl>=3.1
 pytest>=7.0
+fastapi>=0.110
+uvicorn>=0.27

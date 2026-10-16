@@ -4,6 +4,9 @@ O guia aceita **combinar** formatos. Esta pasta cobre **screenshots/figuras**; c
 
 | Arquivo | O que prova |
 |---------|-------------|
+| `ui-01-overview.png` | Command Center — narrativa, recomendação #1, integridade dos dados |
+| `ui-02-drawer-conta.png` | Drawer investigação + deep link `?conta=` |
+| `ui-03-churn-paradox.png` | Paradoxo eventos vs líquido vs revolving |
 | `01_platform_usage_monthly.png` | Uso agregado estável (paradoxo CEO) |
 | `02_net_churn_by_industry.png` | Segmentos (ex.: DevTools) |
 | `03_churn_paradox_counts.png` | 600 eventos vs 110 líquido vs revolving |

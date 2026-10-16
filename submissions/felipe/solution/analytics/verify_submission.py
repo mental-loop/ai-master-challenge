@@ -13,6 +13,7 @@ REQUIRED_OUTPUTS = [
     "fila_cs_top50.csv",
     "dashboard_bundle.json",
     "recommendations_impact.csv",
+    "data_quality_summary.json",
 ]
 
 REQUIRED_REPORTS = [
@@ -20,6 +21,8 @@ REQUIRED_REPORTS = [
     "ceo_one_pager.md",
     "playbook_cs_revolving.md",
     "causality_register.md",
+    "data_quality_ceo.md",
+    "model_and_limits.md",
 ]
 
 REQUIRED_DOCS = [
@@ -63,6 +66,15 @@ def main() -> None:
     proc = SUBMISSION / "process-log" / "PROCESS-LOG.md"
     if not proc.exists():
         fail("process log")
+
+    spec = SUBMISSION / "docs" / "SPEC-001.md"
+    if not spec.exists():
+        fail("doc: SPEC-001.md")
+
+    bundle = json.loads((OUT / "dashboard_bundle.json").read_text(encoding="utf-8"))
+    for key in ("qualidade_dados", "recomendacao_destaque", "investigacoes"):
+        if key not in bundle:
+            fail(f"bundle sem {key}")
 
     print("=== VERIFICAÇÃO CE: APROVADA ===")
 

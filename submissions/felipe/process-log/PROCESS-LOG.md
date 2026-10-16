@@ -88,7 +88,10 @@ Detalhe iterativo: [`chat-exports/SESSAO-CURSOR-EXPORT.md`](./chat-exports/SESSA
 5. Hardening CE (verify, pytest, playbook, impacto, causalidade)  
 6. Command Center React + filtros + identidade G4  
 7. Filtro de período, docs consolidados, `start.bat`  
-8. Polish UI + preparação PR (process log completo, evidências)
+8. Polish UI + preparação PR (process log completo, evidências)  
+9. **Fases P0–P6** — qualidade de dados, drawer conta, SPEC-001, pytest expandido, `start.bat --full`, API read-only, posicionamento PR
+
+**Loom / demo gravada (P5):** _[inserir link quando gravado]_ — alternativa: screenshots `screenshots/ui-*.png` + `start.bat`.
 
 ---
 

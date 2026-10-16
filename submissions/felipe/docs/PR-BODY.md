@@ -13,7 +13,13 @@
 
 - [ ] `cd submissions\felipe` → **`start.bat`**
   - Instala deps Python, confere CSVs (já vêm no PR), pula pipeline/build se `dist/` + bundle existirem, sobe **http://127.0.0.1:8765**
-  - Para rodar pipeline + testes de ponta a ponta de novo: apague `solution/command-center/dist/index.html` e rode `start.bat` outra vez (refaz análise, npm build, verify, pytest).
+  - **`start.bat --full`** — refaz pipeline, npm build, verify e pytest (≥15 testes) sem apagar `dist/`.
+
+**Avaliação ~10 min (banca):**
+
+- [ ] Dashboard → card **Integridade dos dados** + clique numa linha da **fila CS** (drawer + `?conta=`)
+- [ ] `solution/reports/data_quality_ceo.md` + `ceo_one_pager.md`
+- [ ] Screenshots: `process-log/screenshots/ui-*.png`
 
 **Leitura CEO (~5 min):**
 

@@ -3,10 +3,12 @@ import "./App.css";
 import { FilterBar } from "./components/FilterBar";
 import { G4SectionIcon } from "./components/G4Mark";
 import { noDash } from "./lib/copy";
+import { AccountDrawer } from "./components/AccountDrawer";
+import { DataQualityCard } from "./components/DataQualityCard";
 import { IndustryChurnChart, StatusChart, UsageTrendChart } from "./components/Charts";
 import { applyFilters, patchMultiFilter, type MultiFilterKey } from "./lib/filters";
 import { displayLabel } from "./lib/labels";
-import type { Bundle, FilterState } from "./types";
+import type { Bundle, Conta, FilterState } from "./types";
 import { emptyFilters } from "./types";
 
 function fmtUsd(n: number) {
@@ -28,6 +30,7 @@ export default function App() {
   const [bundle, setBundle] = useState<Bundle | null>(null);
   const [filters, setFilters] = useState<FilterState>(emptyFilters());
   const [error, setError] = useState<string | null>(null);
+  const [drawerConta, setDrawerConta] = useState<Conta | null>(null);
 
   useEffect(() => {
     fetch("/data/bundle.json")
@@ -35,9 +38,31 @@ export default function App() {
         if (!r.ok) throw new Error("bundle.json ausente. Rode python run_analysis.py");
         return r.json();
       })
-      .then(setBundle)
+      .then((b: Bundle) => {
+        setBundle(b);
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("conta");
+        if (id) {
+          const c = b.contas.find((x) => x.conta_id === id);
+          if (c) setDrawerConta(c);
+        }
+      })
       .catch((e) => setError(String(e.message)));
   }, []);
+
+  function openConta(c: Conta) {
+    setDrawerConta(c);
+    const url = new URL(window.location.href);
+    url.searchParams.set("conta", c.conta_id);
+    window.history.replaceState({}, "", url.toString());
+  }
+
+  function closeDrawer() {
+    setDrawerConta(null);
+    const url = new URL(window.location.href);
+    url.searchParams.delete("conta");
+    window.history.replaceState({}, "", url.toString());
+  }
 
   const medEsc = bundle?.kpis_globais.mediana_taxa_escalacao ?? 0;
 
@@ -117,6 +142,15 @@ export default function App() {
         </ul>
       </section>
 
+      {bundle.recomendacao_destaque && (
+        <section className="reco-strip">
+          <strong>Recomendação #1:</strong> {bundle.recomendacao_destaque.acao} — impacto MRR{" "}
+          {fmtUsd(bundle.recomendacao_destaque.impacto_mrr_usd)} ({bundle.recomendacao_destaque.confianca})
+        </section>
+      )}
+
+      <DataQualityCard data={bundle.qualidade_dados} />
+
       <FilterBar
         bundle={bundle}
         state={filters}
@@ -146,7 +180,7 @@ export default function App() {
           <div className="label">Eventos churn</div>
           <div className="value">{kpis.events}</div>
         </div>
-        <div className="kpi">
+        <div className="kpi" title="AUC hold-out 25% — triagem CS, não decisão automática. Ver reports/model_and_limits.md">
           <div className="label">AUC modelo</div>
           <div className="value">{bundle.kpis_globais.auc_modelo.toFixed(2)}</div>
         </div>
@@ -206,7 +240,7 @@ export default function App() {
             </thead>
             <tbody>
               {queue.map((r) => (
-                <tr key={r.conta_id}>
+                <tr key={r.conta_id} className="row-click" onClick={() => openConta(r)}>
                   <td>
                     <strong>{r.nome_conta}</strong>
                     <br />
@@ -229,6 +263,16 @@ export default function App() {
       <footer className="foot">
         React + Recharts · Pipeline Python · Felipe de Lima Santiago
       </footer>
+
+      <AccountDrawer
+        conta={drawerConta}
+        investigacao={
+          drawerConta && bundle.investigacoes
+            ? bundle.investigacoes[drawerConta.conta_id] ?? null
+            : null
+        }
+        onClose={closeDrawer}
+      />
     </div>
   );
 }
