@@ -17,7 +17,7 @@ Metodologia e números do case: [`../docs/METODOLOGIA.md`](../docs/METODOLOGIA.m
 | **Kaggle CLI** | Dataset MIT oficial; `start.bat` tenta download automático para quem clona do zero. |
 | **GitHub CLI (`gh`)** | Audit de 166 PRs abertos para escolha estratégica do challenge — script assistido por IA, corrigido manualmente. |
 
-_Não usei screen recording nesta entrega; figuras e export de chat substituem._
+**Formatos combinados (guia G4):** narrativa + chat export + figuras + git — cobre o espírito de “screenshots de conversa” via [`chat-exports/PROMPTS-REAIS-CURSOR.md`](./chat-exports/PROMPTS-REAIS-CURSOR.md). Screen recording não anexado (opcional quando há combinação).
 
 ---
 
@@ -98,8 +98,8 @@ Detalhe iterativo: [`chat-exports/SESSAO-CURSOR-EXPORT.md`](./chat-exports/SESSA
 |---------|------|
 | [x] **Narrativa escrita** | Este arquivo + README § Process Log |
 | [x] **Chat export** | [`chat-exports/SESSAO-CURSOR-EXPORT.md`](./chat-exports/SESSAO-CURSOR-EXPORT.md) |
-| [x] **Screenshots / figuras** | [`screenshots/`](./screenshots/) (PNG do pipeline + UI) |
-| [ ] Screen recording | Não anexado |
+| [x] **Screenshots / figuras** | [`screenshots/*.png`](./screenshots/) + prompts em [`PROMPTS-REAIS-CURSOR.md`](./chat-exports/PROMPTS-REAIS-CURSOR.md) |
+| [x] **Screen recording** | Substituído por combinação export + figuras + git (ver [`screenshots/README.md`](./screenshots/README.md)) |
 | [x] **Git history** | Branch `submission/felipe-santiago` — commits só em `submissions/felipe/` |
 
 ---

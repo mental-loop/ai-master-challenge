@@ -2,7 +2,7 @@
 solution/command-center/node_modules/
 **/__pycache__/
 *.pyc
-.pytest_cache/
+**/.pytest_cache/
 
 # Ambiente
 .env

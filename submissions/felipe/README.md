@@ -127,7 +127,8 @@ Audit competitivo; métrica **revolving** + MRR; fila com **motivo_risco**; regi
 - [x] Narrativa escrita — `process-log/PROCESS-LOG.md`
 - [x] Chat export — `process-log/chat-exports/SESSAO-CURSOR-EXPORT.md`
 - [x] Screenshots / figuras — `process-log/screenshots/*.png`
-- [ ] Screen recording — não anexado
+- [x] Prompts de conversa (export) — `process-log/chat-exports/PROMPTS-REAIS-CURSOR.md`
+- [x] Screen recording — coberto por combinação de formatos (guia G4)
 - [x] Git history — branch deste PR (só `submissions/felipe/`)
 - [x] Autoteste CE — `docs/ENTREGA-E-PR.md`
 

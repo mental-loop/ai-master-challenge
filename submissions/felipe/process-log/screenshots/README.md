@@ -1,11 +1,14 @@
-# Evidências visuais
+# Evidências visuais (process log G4)
 
-Figuras reprodutíveis geradas pelo pipeline (mesmos números do Command Center):
+O guia aceita **combinar** formatos. Esta pasta cobre **screenshots/figuras**; conversas em [`../chat-exports/`](../chat-exports/).
 
-| Arquivo | Conteúdo |
-|---------|----------|
-| `../../solution/outputs/figures/01_platform_usage_monthly.png` | Uso agregado mensal |
-| `../../solution/outputs/figures/02_net_churn_by_industry.png` | Churn líquido por indústria |
-| `../../solution/outputs/figures/03_churn_paradox_counts.png` | Eventos vs churn líquido vs revolving |
+| Arquivo | O que prova |
+|---------|-------------|
+| `01_platform_usage_monthly.png` | Uso agregado estável (paradoxo CEO) |
+| `02_net_churn_by_industry.png` | Segmentos (ex.: DevTools) |
+| `03_churn_paradox_counts.png` | 600 eventos vs 110 líquido vs revolving |
+| [`../chat-exports/PROMPTS-REAIS-CURSOR.md`](../chat-exports/PROMPTS-REAIS-CURSOR.md) | **Prompts e respostas** (equivalente a prints de chat) |
 
-Regenerar: `start.bat` ou `python solution/run_analysis.py`.
+**Command Center (UI):** reproduzível — `start.bat` → http://127.0.0.1:8765 (filtros, período, fila CS). Commit inclui `command-center/dist/` para avaliador sem npm.
+
+**Screen recording:** não anexado; substituído por export escrito + figuras + git history (combinação explícita no guia G4).

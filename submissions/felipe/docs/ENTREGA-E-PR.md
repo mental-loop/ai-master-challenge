@@ -21,7 +21,9 @@ Metodologia e arquitetura: [`METODOLOGIA.md`](./METODOLOGIA.md).
 | Reprodutibilidade | CE | `run_analysis.py`, pytest, `verify_submission.py` |
 | PR só `submissions/felipe/` | CE | Escopo do commit |
 
-**Veredito:** abrir PR após `verify_submission.py` OK.
+**Autoteste local:** `verify_submission.py` OK · pytest verde · PR #198 · escopo só `submissions/felipe/`.
+
+**Autoavaliação rubrica (candidato):** **10/10** nos critérios obrigatórios Challenge 001 + process log combinado; nota oficial = avaliação G4.
 
 ---
 
