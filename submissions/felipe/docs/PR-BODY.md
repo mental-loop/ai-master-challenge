@@ -9,12 +9,17 @@
 
 ## Test plan
 
-- [ ] CSVs Kaggle em `submissions/felipe/data/` (ou `start.bat` no Windows)
-- [ ] `cd submissions/felipe/solution && pip install -r requirements.txt && python run_analysis.py`
-- [ ] `cd command-center && npm install && npm run build`
-- [ ] `python verify_submission.py` e `pytest analytics/tests/`
-- [ ] `python serve_dashboard.py` — http://127.0.0.1:8765
-- [ ] `reports/ceo_one_pager.md` (~5 min)
+**Windows (recomendado — um comando):**
+
+- [ ] `cd submissions\felipe` → **`start.bat`**
+  - Instala deps Python, confere CSVs (já vêm no PR), pula pipeline/build se `dist/` + bundle existirem, sobe **http://127.0.0.1:8765**
+  - Para rodar pipeline + testes de ponta a ponta de novo: apague `solution/command-center/dist/index.html` e rode `start.bat` outra vez (refaz análise, npm build, verify, pytest).
+
+**Leitura CEO (~5 min):**
+
+- [ ] `submissions/felipe/solution/reports/ceo_one_pager.md`
+
+**Opcional (Linux/macOS ou auditoria manual):** ver `submissions/felipe/README.md` e `solution/README.md`.
 
 ## Process log
 

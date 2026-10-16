@@ -36,7 +36,7 @@ Metodologia e arquitetura: [`METODOLOGIA.md`](./METODOLOGIA.md).
 | Setup | `requirements.txt`, `start.bat` |
 | 3 perguntas do brief | `executive_summary.md` + `METODOLOGIA.md` §3 |
 
-Autoteste: `cd submissions/felipe/solution && python verify_submission.py`
+Autoteste rápido (Windows): `submissions\felipe\start.bat` · gate: `python verify_submission.py` em `solution/`
 
 ---
 
