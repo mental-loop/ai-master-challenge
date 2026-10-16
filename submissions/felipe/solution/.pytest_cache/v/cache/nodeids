@@ -1,0 +1,6 @@
+[
+  "analytics/tests/test_pipeline.py::test_account_master_has_five_table_fields",
+  "analytics/tests/test_pipeline.py::test_action_queue_explainability",
+  "analytics/tests/test_pipeline.py::test_integration_qa_passes",
+  "analytics/tests/test_pipeline.py::test_summary_stats_json"
+]
